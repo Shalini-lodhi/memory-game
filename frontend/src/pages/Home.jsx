@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { getThemes } from "../api/themeApi";
 import { useNavigate } from "react-router-dom";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { AuthContext } from "../context/AuthContext";
 
 const Home = () => {
   const [playerName, setPlayerName] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
   const [themes, setThemes] = useState([]); // Store array of themes
   const [selectedThemeValue, setSelectedThemeValue] = useState(""); // Store selected theme name
+  const { user, logout } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -43,11 +45,24 @@ const Home = () => {
     const imagesArray = selectedTheme.images || []; // Fix potential undefined issue
     const encodedImages = encodeURIComponent(JSON.stringify(imagesArray)); // Encode safely
 
-    navigate(`/game?theme=${selectedThemeValue}&player=${playerName}&images=${encodedImages}`);
+    navigate(
+      `/game?theme=${selectedThemeValue}&player=${playerName}&images=${encodedImages}`
+    );
+  };
+  const handleLogout = () => {
+    logout();
+    navigate("/");
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="relative flex items-center justify-center min-h-screen bg-gray-100">
+      {/* Logout Button in the top-right corner */}
+      <button
+        onClick={handleLogout}
+        className="absolute top-4 right-4 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-md transition duration-300"
+      >
+        Logout
+      </button>
       <div className="bg-white shadow-lg rounded-lg p-8 w-96">
         <DotLottieReact
           src="https://lottie.host/001f3da0-ba23-4664-a9b8-37983596a1c6/0X8jBj6mit.lottie"
