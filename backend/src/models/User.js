@@ -6,7 +6,13 @@ const UserSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  scores: [{ type: mongoose.Schema.Types.ObjectId, ref: "GameSession" }],
+  scores: [
+    {
+      theme: { type: String, required: true },
+      moves: { type: Number, required: true },
+      timeTaken: { type: Number, required: true },
+    },
+  ],
 });
 
 // Hash password before saving

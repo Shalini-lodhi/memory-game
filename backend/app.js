@@ -4,9 +4,12 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 
+// const Score = require("./src/models/Score");
+
 const themeRoutes = require("./src/routes/themeRoutes");
 const gameRoutes = require("./src/routes/gameRoutes");
 const authRoutes = require("./src/routes/authRoutes");
+const scoreRoutes = require("./src/routes/scoreRoutes");
 
 dotenv.config();
 const app = express();
@@ -33,5 +36,6 @@ app.use(
 app.use("/api/themes", themeRoutes);
 app.use("/api/games", gameRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/scores", scoreRoutes); 
 
 module.exports = app;

@@ -1,31 +1,15 @@
-// import axios from "axios";
+import axios from "axios";
 
-// const API_URL = "http://localhost:5000/api/game"; // Ensure this matches your backend
+const API_BASE_URL = "http://localhost:5000/api/games";
 
-// export const startGame = async (themeId) => {
-//   return axios.post(`${API_URL}/start`, { theme_id: themeId });
-// };
-
-// export const makeMove = async (gameId, cardId) => {
-//   return axios.post(`${API_URL}/move`, { game_id: gameId, card_id: cardId });
-// };
-
-const BASE_URL = "http://localhost:5000/api/games";
-
-export const startGame = async (themeId) => {
-  const response = await fetch(`${BASE_URL}/start`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ themeId }),
-  });
-  return response.json();
+// Save game details when the game ends
+export const saveGameDetails = async (gameData) => {
+  try {
+    const response = await axios.post(`${API_BASE_URL}/save`, gameData);
+    return response.data;
+  } catch (error) {
+    console.error("Error saving game details:", error);
+    throw error;
+  }
 };
-
-export const makeMove = async (gameId, cardId) => {
-  const response = await fetch(`${BASE_URL}/move`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ gameId, cardId }),
-  });
-  return response.json();
-};
+   

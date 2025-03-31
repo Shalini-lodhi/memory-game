@@ -4,7 +4,6 @@ export const getThemes = async () => {
     if (!response.ok) throw new Error("Failed to fetch themes");
 
     const data = await response.json();
-    console.log("Raw API Response:", data);
 
     if (data.success && data.themes && Array.isArray(data.themes.themes)) {
       return data.themes.themes; // Extract the correct array
