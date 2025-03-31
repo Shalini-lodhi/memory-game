@@ -16,6 +16,15 @@ export default {
       transform: {
         'rotate-y-180': 'rotateY(180deg)',
       },
+      animation: {
+        fadeUp: "fadeUp 0.7s ease-out",
+      },
+      keyframes: {
+        fadeUp: {
+          "0%": { opacity: 1, transform: "translateY(0px)" },
+          "100%": { opacity: 0, transform: "translateY(-20px)" },
+        },
+      },
     },
   },
   plugins: [],

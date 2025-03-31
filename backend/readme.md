@@ -21,4 +21,7 @@
 5. Data Access Layer → Interacts with the database
 6. Test
 
+### JWT Token
+`[System.Guid]::NewGuid().ToString("N")`
+
 #### UML Class Diagram
