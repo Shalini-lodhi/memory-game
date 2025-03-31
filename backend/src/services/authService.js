@@ -16,7 +16,6 @@ exports.registerUser = async ({ username, email, password }) => {
   return { message: "User registered successfully", user };
 };
 
-
 exports.loginUser = async ({ email, password }) => {
   const user = await User.findOne({ email });
   if (!user) throw new Error("Invalid credentials");
@@ -28,4 +27,3 @@ exports.loginUser = async ({ email, password }) => {
   const token = generateToken(user._id);
   return { token, user };
 };
-

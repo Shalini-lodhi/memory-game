@@ -34,8 +34,12 @@ const Auth = () => {
         : await loginUser(formData);
       login(res.data.user);
       navigate("/home");
-    } catch (err) {
-      setError(err.response?.data?.message || "Something went wrong");
+    }  catch (err) {
+      if (!isSignUp && err.response?.status === 401) {
+        setError("No user found. Try signing up.");
+      } else {
+        setError(err.response?.data?.message || "Something went wrong");
+      }
     }
   };
 
