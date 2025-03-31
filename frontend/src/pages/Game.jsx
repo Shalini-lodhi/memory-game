@@ -74,10 +74,10 @@ const Game = () => {
 
     // Create 4 copies of each image, each with a unique ID
     const allCards = images.flatMap((image, index) =>
-      Array.from({ length: 2 }, (_, copyIndex) => ({
+      Array.from({ length: 4 }, (_, copyIndex) => ({
         id: `${index}-${copyIndex}`, // Unique ID for each card
         src: image,
-        isFlipped: true, // Force all cards to be flipped
+        isFlipped: false, // Force all cards to be flipped
         isMatched: false,
       }))
     );
@@ -88,13 +88,13 @@ const Game = () => {
   // Initialize Game
   useEffect(() => {
     setCards(loadCards());
-    setGameOver(false);
-    setTimerActive(true);
-    setTime(0); // Reset timer on theme change
-    setScore(0);
-    setMoves(0);
-    setSelectedCards([]);
-  }, [theme]);
+     setGameOver(false);
+     setTimerActive(true);
+     setTime(0); // Reset timer on theme change
+     setScore(0);
+     setMoves(0);
+     setSelectedCards([]);
+}, [theme]);
 
   // Handle Card Click
   const handleCardClick = (cardId) => {
