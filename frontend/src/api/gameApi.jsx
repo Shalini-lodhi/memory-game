@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:5000/api/games";
+const API_BASE_URL = "/api/games";
 
 // Save game details when the game ends
 export const saveGameDetails = async (gameData) => {

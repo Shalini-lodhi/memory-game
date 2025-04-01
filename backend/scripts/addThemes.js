@@ -1,10 +1,4 @@
-const mongoose = require("mongoose");
 const Theme = require("../src/models/Theme"); // Adjust path based on your structure
-
-mongoose.connect("mongodb://localhost:27017/memory-game", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
 
 const themes = [
   {
@@ -63,15 +57,14 @@ const themes = [
   },
 ];
 
-const uploadThemes = async () => {
+exports.uploadThemes = async () => {
   try {
     await Theme.deleteMany({}); // Clear existing themes
     await Theme.insertMany(themes);
     console.log("Themes uploaded successfully!");
-    mongoose.connection.close();
   } catch (error) {
     console.error("Error uploading themes:", error);
   }
 };
 
-uploadThemes();
+

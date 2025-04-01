@@ -11,12 +11,18 @@ const gameRoutes = require("./src/routes/gameRoutes");
 const authRoutes = require("./src/routes/authRoutes");
 const scoreRoutes = require("./src/routes/scoreRoutes");
 
+const addTheme = require("./scripts/addThemes");
+
 dotenv.config();
 const app = express();
 
 //Middleware
-app.use(cors({ origin: "http://localhost:5173", credentials: true })); // Enable CORS to allow frontend requests
+app.use(cors()); // Enable CORS to allow frontend requests //{ origin: "http://localhost:5173", credentials: true }
+
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(express.json()); // Handle JSON requests
+
 
 mongoose
   .connect(process.env.MONGO_URI, {
@@ -25,6 +31,8 @@ mongoose
   })
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.error("MongoDB Connection Error:", err));
+
+addTheme.uploadThemes();
 
 // Serve static images
 app.use(

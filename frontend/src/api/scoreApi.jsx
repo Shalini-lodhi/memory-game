@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:5000/api/scores";
+const API_BASE_URL = "/api/scores";
 
 export const saveScore = async (scoreData) => {
   const token = localStorage.getItem("token");

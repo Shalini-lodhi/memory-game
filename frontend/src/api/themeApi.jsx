@@ -1,6 +1,8 @@
+const API_BASE_URL = "/api/themes";
+
 export const getThemes = async () => {
   try {
-    const response = await fetch("http://localhost:5000/api/themes");
+    const response = await fetch(`${API_BASE_URL}`);
     if (!response.ok) throw new Error("Failed to fetch themes");
 
     const data = await response.json();
