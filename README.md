@@ -148,14 +148,14 @@ The frontend will run on `http://localhost:5173/`
 - Once all pairs are matched, a **summary page** appears.  
 - Button to **restart the game** or **return to home**.
 <p float="left">
-  <img src="./images/6.png" width="800" />
+  <img src="./images/6.png" width="700" />
 </p>
 
 ### **📌 Scoreboard Component (`Scoreboard.jsx`)**  
 - Displays the **real-time score** of the user.  
 - Shows **moves taken** and **time elapsed**.
 <p float="left">
-  <img src="./images/7.png" width="800" />
+  <img src="./images/7.png" width="600" />
 </p>
 
 ### **📌 Leaderboard Page (`Leaderboard.jsx`)**  
@@ -165,7 +165,6 @@ The frontend will run on `http://localhost:5173/`
 <p float="left">
   <img src="./images/4.png" width="400" />
 </p>
----
 
 ### **✅ Summary**  
 - **Backend**: Node.js + Express + MongoDB/PostgreSQL  
