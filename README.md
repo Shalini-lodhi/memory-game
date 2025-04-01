@@ -121,13 +121,24 @@ The frontend will run on `http://localhost:5173/`
 - Authentication is handled via JWT.  
 - Once logged in, users are redirected to the **Home Page**.
 
+<p float="left">
+  <img src="./images/1.png" width="450" />
+  <img src="./images/2.png" width=400" />
+</p>
+
+
 ### **📌 Home Page (`Home.jsx`)**  
 - Users see a welcome screen.  
 - Can select a game theme from the available options.
 - Can check it's previous and highest score for the theme selected.
 - Button to **Start Game** after selecting a theme.  
 - Navigation to **Leaderboard**
-- Button to Logout, user will redirect to **Auth Page**.  
+- Button to Logout, user will redirect to **Auth Page**.
+
+<p float="left">
+  <img src="./images/3.png" width="800" />
+  <img src="./images/5.png" width=400" />
+</p>
 
 ### **📌 Game Page (`Game.jsx`)**  
 - The **6x6 grid** of cards appears based on the selected theme.  
@@ -135,16 +146,25 @@ The frontend will run on `http://localhost:5173/`
 - Score, moves, and time are tracked.
 - For every right match, user gets **+10**, else **-1** 
 - Once all pairs are matched, a **summary page** appears.  
-- Button to **restart the game** or **return to home**.  
+- Button to **restart the game** or **return to home**.
+<p float="left">
+  <img src="./images/6.png" width="800" />
+</p>
 
 ### **📌 Scoreboard Component (`Scoreboard.jsx`)**  
 - Displays the **real-time score** of the user.  
-- Shows **moves taken** and **time elapsed**.  
+- Shows **moves taken** and **time elapsed**.
+<p float="left">
+  <img src="./images/7.png" width="800" />
+</p>
 
 ### **📌 Leaderboard Page (`Leaderboard.jsx`)**  
 - Displays **top scores** by theme.  
 - Fetches and displays the highest scores.  
-- Users can **filter** scores by different themes. 
+- Users can **filter** scores by different themes.
+<p float="left">
+  <img src="./images/4.png" width="400" />
+</p>
 ---
 
 ### **✅ Summary**  
