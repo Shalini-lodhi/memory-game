@@ -11,7 +11,7 @@ import Leaderboard from "./Leaderboard";
 
 const Home = () => {
   const [themes, setThemes] = useState([]);
-  const [selectedTheme, setSelectedTheme] = useState("Animals");
+  const [selectedTheme, setSelectedTheme] = useState("");
   const [userHighScore, setUserHighScore] = useState(0);
   const [overallHighScore, setOverallHighScore] = useState(0);
   const { user, logout } = useContext(AuthContext);
@@ -25,7 +25,12 @@ const Home = () => {
         setThemes(data);
         // If no theme is saved in localStorage, set the default 'Animals'
         if (!localStorage.getItem("theme")) {
-          localStorage.setItem("theme", "Animals");
+          localStorage.setItem("theme", "Animals" );
+          setSelectedTheme("Animals");
+        }
+        else{
+          const getTheme = localStorage.getItem("theme");
+          setSelectedTheme(getTheme);
         }
       })
       .catch((error) => console.error("Error fetching themes:", error));
@@ -40,10 +45,12 @@ const Home = () => {
   useEffect(() => {
     if (user) {
       getUserScores(user._id, selectedTheme).then((data) => {
+        navigate("/home", { replace: true, state: { refresh: new Date().getTime() } })
         setUserHighScore(data); // Best score (least moves, least time)
       });
-
+      
       getHighestScore(selectedTheme).then((data) => {
+        navigate("/home", { replace: true, state: { refresh: new Date().getTime() } })
         setOverallHighScore(data); // Best overall score
       });
     }

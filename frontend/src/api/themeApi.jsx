@@ -1,6 +1,6 @@
 export const getThemes = async () => {
   try {
-    const response = await fetch("http://localhost:5000/api/themes"); //http://localhost:5000/api/themes
+    const response = await fetch("http://localhost:5000/api/themes");
     if (!response.ok) throw new Error("Failed to fetch themes");
 
     const data = await response.json();
