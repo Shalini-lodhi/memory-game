@@ -184,8 +184,8 @@ const Game = () => {
   return (
     <div className="bg-gradient-to-r from-blue-50 to-gray-200 min-h-screen flex flex-col items-center p-6">
       {/* Header */}
-      <header className="w-full max-w-4xl flex justify-between items-center bg-white p-4 rounded-xl shadow-lg backdrop-blur-lg">
-        <div className="text-lg font-semibold">
+      <header className="w-full max-w-4xl flex flex-wrap justify-between items-center bg-white p-4 rounded-xl shadow-lg backdrop-blur-lg">
+        <div className="text-lg font-semibold ">
           <span className="text-blue-600">{theme}</span>
         </div>
         <div className="text-lg font-semibold">
@@ -214,16 +214,17 @@ const Game = () => {
         cards={cards}
         onCardClick={handleCardClick}
         scoreAnimation={scoreAnimation}
+        gridClass="grid-cols-2 sm:grid-cols-4 lg:grid-cols-6"
       />
 
       {/* Buttons */}
-      <div className="mt-6 flex space-x-4">
+      <div className="mt-8 flex justify-between w-full max-w-2xl">
         {/* Quit Button */}
         <button
           onClick={() => navigate("/home")}
           className="bg-gray-500 text-white px-6 py-2 rounded-lg text-lg font-semibold hover:bg-gray-600 transition"
         >
-          Quit
+           Quit 
         </button>
 
         {/* Restart Button */}
@@ -248,7 +249,7 @@ const Game = () => {
       )}
 
       {/* Footer */}
-      <footer className="mt-8 text-gray-600 text-sm">
+      <footer className="mt-8 text-gray-600 text-sm text-center sm:text-left">
         &copy; 2025 Memory Game. All rights reserved.
       </footer>
     </div>

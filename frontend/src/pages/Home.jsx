@@ -25,10 +25,9 @@ const Home = () => {
         setThemes(data);
         // If no theme is saved in localStorage, set the default 'Animals'
         if (!localStorage.getItem("theme")) {
-          localStorage.setItem("theme", "Animals" );
+          localStorage.setItem("theme", "Animals");
           setSelectedTheme("Animals");
-        }
-        else{
+        } else {
           const getTheme = localStorage.getItem("theme");
           setSelectedTheme(getTheme);
         }
@@ -45,12 +44,18 @@ const Home = () => {
   useEffect(() => {
     if (user) {
       getUserScores(user._id, selectedTheme).then((data) => {
-        navigate("/home", { replace: true, state: { refresh: new Date().getTime() } })
+        navigate("/home", {
+          replace: true,
+          state: { refresh: new Date().getTime() },
+        });
         setUserHighScore(data); // Best score (least moves, least time)
       });
-      
+
       getHighestScore(selectedTheme).then((data) => {
-        navigate("/home", { replace: true, state: { refresh: new Date().getTime() } })
+        navigate("/home", {
+          replace: true,
+          state: { refresh: new Date().getTime() },
+        });
         setOverallHighScore(data); // Best overall score
       });
     }
@@ -87,11 +92,11 @@ const Home = () => {
   };
 
   return (
-    <div className="relative flex min-h-screen bg-gray-100">
+    <div className="relative flex flex-col sm:flex-row min-h-screen bg-gray-100">
       {/* Logout Button (Top Right) */}
       <button
         onClick={handleLogout}
-        className="absolute top-4 right-4 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-md transition duration-300"
+        className="absolute top-4 right-4 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-md transition duration-30"
       >
         Logout
       </button>
@@ -101,7 +106,7 @@ const Home = () => {
         <h2 className="text-3xl font-bold text-gray-800 mb-4">Scoreboard</h2>
 
         {/* Your Best Score */}
-        <div className="bg-white shadow-md rounded-lg p-6 w-full sm:w-2/3 text-center">
+        <div className="bg-white shadow-md rounded-lg p-6 w-full max-w-md sm:w-2/3 text-center">
           <div className="text-gray-700 text-lg font-semibold">
             Your Best Score
           </div>
@@ -118,12 +123,14 @@ const Home = () => {
               </div>
             </div>
           ) : (
-            <div className="text-gray-500">No score yet. Let's fix that! 😏</div>
+            <div className="text-gray-500">
+              No score yet. Let's fix that! 😏
+            </div>
           )}
         </div>
 
         {/* Highest Score (Least Moves & Time) */}
-        <div className="bg-white shadow-md rounded-lg p-6 w-full sm:w-2/3 text-center mt-4">
+        <div className="bg-white shadow-md rounded-lg p-6 w-full max-w-md sm:w-2/3 text-center mt-4">
           <div className="text-gray-700 text-lg font-semibold">
             Highest Score (Overall)
           </div>
@@ -154,41 +161,43 @@ const Home = () => {
       </div>
 
       {/* Right Side: Welcome Message & Theme Selection */}
-      <div className="w-full sm:w-1/2 flex flex-col items-center justify-center p-6 bg-white shadow-lg">
+      <div className="w-full sm:w-1/2 flex flex-col items-center justify-center p-6 bg-white  ">
         <h1 className="text-3xl font-bold text-gray-800 mb-6">
           Welcome, {user?.username || "Guest"}! 🧠
         </h1>
 
         {/* Theme Selection */}
-         {/* Witty Message */}
-         <p className="mt-4 text-center text-gray-600">
-          Ready to test your memory? Choose a theme and let the challenge begin!  
+        <p className="mt-4 text-center text-gray-600">
+          Ready to test your memory? Choose a theme and let the challenge begin!
         </p>
-        <label className="mt-6 flex flex-col w-2/3">
-          <span className="text-gray-700 font-medium">Select a Theme:</span>
-          <select
-            value={selectedTheme}
-            onChange={handleThemeChange}
-            className="mt-1 px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-          >
-            {themes.length > 0 ? (
-              themes.map((theme) => (
-                <option key={theme._id} value={theme.name}>
-                  {theme.name}
-                </option>
-              ))
-            ) : (
-              <option disabled>Loading themes...</option>
-            )}
-          </select>
-        </label>
+        <div className="container mx-auto">
+          <label className="mt-6 flex flex-col w-full max-w-xs mx-auto">
+            <span className="text-gray-700 font-medium">Select a Theme:</span>
+            <select
+              value={selectedTheme}
+              onChange={handleThemeChange}
+              className="mt-1 px-5 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 
+                focus:outline-none w-full max-w-xs"
+            >
+              {themes.length > 0 ? (
+                themes.map((theme) => (
+                  <option key={theme._id} value={theme.name}>
+                    {theme.name}
+                  </option>
+                ))
+              ) : (
+                <option disabled>Loading themes...</option>
+              )}
+            </select>
+          </label>
+        </div>
 
         {/* Start Game Button */}
         <button
           onClick={handleStartGame}
           className="mt-6 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-md transition duration-300"
         >
-          Start Game 
+          Start Game
         </button>
       </div>
 
