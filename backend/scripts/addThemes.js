@@ -34,6 +34,32 @@ const themes = [
       "http://localhost:5000/assets/images/harry-potter/8.jpg",
       "http://localhost:5000/assets/images/harry-potter/9.jpg",
     ],
+  },{
+    name: "Fruits",
+    images: [
+      "http://localhost:5000/assets/images/fruits/1.jpg",
+      "http://localhost:5000/assets/images/fruits/2.jpg",
+      "http://localhost:5000/assets/images/fruits/3.jpg",
+      "http://localhost:5000/assets/images/fruits/4.jpg",
+      "http://localhost:5000/assets/images/fruits/5.jpg",
+      "http://localhost:5000/assets/images/fruits/6.jpg",
+      "http://localhost:5000/assets/images/fruits/7.jpg",
+      "http://localhost:5000/assets/images/fruits/8.jpg",
+      "http://localhost:5000/assets/images/fruits/9.jpg",
+    ],
+  },{
+    name: "World",
+    images: [
+      "http://localhost:5000/assets/images/wonders-of-world/1.jpg",
+      "http://localhost:5000/assets/images/wonders-of-world/2.jpg",
+      "http://localhost:5000/assets/images/wonders-of-world/3.jpg",
+      "http://localhost:5000/assets/images/wonders-of-world/4.jpg",
+      "http://localhost:5000/assets/images/wonders-of-world/5.jpg",
+      "http://localhost:5000/assets/images/wonders-of-world/6.jpg",
+      "http://localhost:5000/assets/images/wonders-of-world/7.jpg",
+      "http://localhost:5000/assets/images/wonders-of-world/8.jpg",
+      "http://localhost:5000/assets/images/wonders-of-world/9.jpg",
+    ],
   },
 ];
 
